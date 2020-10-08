@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
 
@@ -20,17 +20,31 @@ const BreedImages = (props: any) => {
     if (subBreeds === undefined || subBreeds.length === 0) {
       return '';
     }
-    // const data = subBreeds.map((item: any) => (<span className="text-color-brown">{item}</span>))
 
     const data = subBreeds.map((item: any, index: number) => (
       <>
         {/* TODO remove last comma */}
         <span className="text-color-brown">{item}</span> <span>, </span>
-     
+
       </>
     ))
 
     return <p>Sub breads: {data}</p>
+  }
+
+  const generateImages = (allBreedImages: any) => {
+
+
+    const images = allBreedImages[breedGroup];
+
+    if (images === undefined) {
+      return '';
+    }
+
+    return images.map((img: string) => (
+      <img src={img} alt="" />
+    ));
+
   }
 
   return (
@@ -40,8 +54,8 @@ const BreedImages = (props: any) => {
 
       {generateSubBreeds(props.allBreeds)}
 
-      <div>
-        Breed Images {breedGroup}
+      <div className="imagesContainer">
+        {generateImages(props.subBreedImages)}
       </div>
     </Template1>
   );
