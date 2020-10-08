@@ -1,5 +1,18 @@
 # react_developer_technical_test
 
+## To Run The App
+```
+  yarn start
+```
+
+## Still Todo
+```
+- Add The typescript typechecking
+- Add the list filter
+- Refresh the images
+- Add loading spinner
+```
+
 
 ### Resources used
 
