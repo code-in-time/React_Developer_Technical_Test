@@ -7,7 +7,7 @@
 
 ## Still Todo
 ```
-- Add The typescript typechecking
+- Add The typescript type checking
 - Add the list filter
 - Refresh the images
 - Add loading spinner
