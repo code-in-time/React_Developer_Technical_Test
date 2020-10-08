@@ -41,8 +41,8 @@ const BreedImages = (props: any) => {
       return '';
     }
 
-    return images.map((img: string) => (
-      <img src={img} alt="" />
+    return images.map((imgUrl: string) => (
+      <div className="imgArea" style={{backgroundImage: 'url(' + imgUrl + ')'}}> </div>
     ));
 
   }

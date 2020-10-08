@@ -3,7 +3,9 @@
   div.imagesContainer {
     text-align: center;
 
-    img {
+    .imgArea {
+      background-size: cover;
+      background-repeat: no-repeat;
       width: 280px;
       height: 280px;
       display: inline-block;
