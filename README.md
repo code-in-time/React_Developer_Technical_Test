@@ -1,7 +1,12 @@
 # react_developer_technical_test
 
+
 ## To Run The App
 ```
+  // Install modules
+  yarn install
+
+  // Start the app
   yarn start
 ```
 
