@@ -1,8 +1,10 @@
 div.Home {
 
   table {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     border-collapse: collapse;
+    padding-top: 30px;
 
     th, td {
       padding: 4px;
