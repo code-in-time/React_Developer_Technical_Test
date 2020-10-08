@@ -8,3 +8,4 @@
 - https://dog.ceo/dog-api/documentation/breed
 - https://www.typescriptlang.org/docs/handbook/compiler-options.html
 - https://create-react-app.dev/docs/documentation-intro
+- https://dev.to/renatobentorocha/react-redux-with-typescript-1n6b

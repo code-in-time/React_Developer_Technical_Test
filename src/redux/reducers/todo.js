@@ -1,0 +1,16 @@
+const initialState = {
+  allIds: [],
+  byIds: {}
+};
+
+export default function(state = initialState, action) {
+  switch (action.type) {
+    case 'ADD_TODO': {
+      // const { id, content } = action.payload;
+      return {}
+    }
+
+    default:
+      return state;
+  }
+}
