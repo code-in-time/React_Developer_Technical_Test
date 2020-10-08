@@ -12,10 +12,11 @@
 
 ## Still Todo
 ```
-- Add The typescript type checking
+- Work on typescript type checking
 - Add the list filter
 - Refresh the images
 - Add loading spinner
+- eslint warning "react-hooks/exhaustive-deps"
 ```
 
 
