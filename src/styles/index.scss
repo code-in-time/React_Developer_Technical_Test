@@ -29,6 +29,7 @@ input {
   height: 40px;
   border: 1px solid $color-brown;
   outline: none;
+  border-radius: $radius1;
 }
 
 /** helpers */
@@ -55,4 +56,5 @@ input {
   color: $color-brown;
   padding: 5px;
   text-decoration: none;
+  border-radius: $radius1;
 }
