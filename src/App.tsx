@@ -6,7 +6,6 @@ import {
   Link
 } from "react-router-dom";
 
-import './App.css';
 import BreedImages from './Pages/BreedImages';
 import Home from './Pages/Home';
 
