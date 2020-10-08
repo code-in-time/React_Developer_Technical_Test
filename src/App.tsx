@@ -15,7 +15,7 @@ function App() {
       <Router>
         <div>
           <Link to="/" >Home</Link> |
-          <Link to="/breedImages">Breed Images</Link>
+          <Link to="/breedImages/corgi">Breed Images</Link>
           <hr />
 
           <Switch>

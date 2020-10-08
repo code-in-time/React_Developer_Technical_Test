@@ -1,14 +1,19 @@
+import cloneDeep from "lodash/cloneDeep";
+const axios = require('axios');
+
 // widgets.js
 
 // Actions
-const LOAD = 'my-app/widgets/LOAD';
-const CREATE = 'my-app/widgets/CREATE';
-const UPDATE = 'my-app/widgets/UPDATE';
-const REMOVE = 'my-app/widgets/REMOVE';
+const ACTION_SAVE_ALL_BREEDS = 'ACTION_SAVE_ALL_BREEDS';
+const ACTION_SAVE_SUBBREED_IMAGES = 'ACTION_SAVE_SUBBREED_IMAGES';
 
 const initState = {
   allBreeds: ['a', 'a'],
-  savedSearched: [],
+  subBreedImages: [
+    {breed1: ['img1', 'img2']},
+    {breed2: ['img1', 'img2']},
+    {breed3: ['img1', 'img2']},
+  ],
   APILoading: {
     allBreeds: false,
     getImages: false
@@ -19,31 +24,91 @@ const initState = {
 // Reducer
 export default function reducer(state = initState, action = {}) {
   switch (action.type) {
-    // do reducer stuff
+    
+      case ACTION_SAVE_ALL_BREEDS:
+        state = cloneDeep(state);
+        state.allBreeds = action.payload.allBreeds;
+        return state;
+
+      case ACTION_SAVE_SUBBREED_IMAGES:
+        state = cloneDeep(state);
+        // Cache the image searches
+        const obj = {}
+        obj[action.payload.breedName] = action.payload.subBreedImages;
+        state.subBreedImages.push(obj)
+        return state;
+
     default: return state;
   }
 }
 
 
-// Action Creators
-export function loadWidgets() {
-  return { type: LOAD };
+/**
+ * This is used to save the result of the API to the reducer
+ * @param {object} allBreeds 
+ */
+export const actionCreator_SAVE_ALL_BREEDS = allBreeds => {
+  return {
+    type: ACTION_SAVE_ALL_BREEDS,
+    payload: { allBreeds }
+  };
 }
 
-export function createWidget(widget) {
-  return { type: CREATE, widget };
+/**
+ * This is used to save the result of the API to the reducer
+ * @param {object} images 
+ */
+ export const actionCreator_SAVE_SUBBREED_IMAGES = (subBreedImages, breedName) => {
+  return {
+    type: ACTION_SAVE_SUBBREED_IMAGES,
+    payload: { subBreedImages, breedName }
+  };
 }
 
-export function updateWidget(widget) {
-  return { type: UPDATE, widget };
+// Thunks
+
+export const thunkGetAllBreeds = () => {
+  return (dispatch) => {
+    // Make a request
+    axios.get('https://dog.ceo/api/breeds/list/all')
+      .then(function (response) {
+        const data = response.data.message;
+        dispatch(actionCreator_SAVE_ALL_BREEDS(data))
+        // Save the breeds
+        console.log('response', data)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log('error', error);
+      })
+
+  }
 }
 
-export function removeWidget(widget) {
-  return { type: REMOVE, widget };
+export const thunkGetBreedSubImages = (breedName) => {
+  return (dispatch, state) => {
+
+    // Check if this exists in the cache
+    // if (state.Breeds.subBreedImages[breedName]) {
+
+    //   dispatch(actionCreator_SAVE_SUBBREED_IMAGES(subBreedImages, breedName))
+    // }
+
+
+
+    // Make a request
+    axios.get('https://dog.ceo/api/breed/hound/images/random/3')
+      .then(function (response) {
+        const subBreedImages = response.data.message;
+        dispatch(actionCreator_SAVE_SUBBREED_IMAGES(subBreedImages, breedName))
+        // Save the breeds
+        console.log('response', response)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log('error', error);
+      })
+
+  }
 }
 
-// // side effects, only as applicable
-// // e.g. thunks, epics, etc
-// export function getWidget () {
-//   return dispatch => get('/widget').then(widget => dispatch(updateWidget(widget)))
-// }

@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
 
-const BreedImages = () => {
+import { thunkGetBreedSubImages } from '../redux/reducers/Breeds';
+
+const BreedImages = (props: any) => {
 
   // Get the  breed group from the url
   let { breedGroup } = useParams<{ breedGroup: string }>();
+
+  useEffect(() => {
+    // Get the list of breed groups. Call the thunk
+    props.thunkGetBreedSubImages(breedGroup);
+  }, []);
 
   return (
     <div>
@@ -13,4 +21,12 @@ const BreedImages = () => {
   );
 };
 
-export default BreedImages;
+const mapStateToProps = (state: any) => ({
+  subBreedImages: state.Breeds.subBreedImages
+});
+
+const mapDispatchToProps = {
+  thunkGetBreedSubImages
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BreedImages);
