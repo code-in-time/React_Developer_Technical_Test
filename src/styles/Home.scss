@@ -15,6 +15,16 @@ div.Home {
       border-bottom: 1px solid $color-black;
     }
 
+    td {
+      border-bottom: 1px solid $color-grey;
+    }
+
+    tr:last-child {
+      td {
+        border-bottom: none;
+      }
+    }
+
     a {
       color: $color-brown;
     }
