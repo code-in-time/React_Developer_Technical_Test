@@ -8,18 +8,13 @@ const ACTION_SAVE_ALL_BREEDS = 'ACTION_SAVE_ALL_BREEDS';
 const ACTION_SAVE_SUBBREED_IMAGES = 'ACTION_SAVE_SUBBREED_IMAGES';
 
 const initState = {
-  allBreeds: ['a', 'a'],
-  subBreedImages: {
-    breed1: ['img1', 'img2'],
-    breed2: ['img1', 'img2'],
-    breed3: ['img1', 'img2'],
-  },
+  allBreeds: [],
+  subBreedImages: {},
   APILoading: {
     allBreeds: false,
     getImages: false
   }
 }
-
 
 // Reducer
 export default function reducer(state = initState, action = {}) {
@@ -39,7 +34,6 @@ export default function reducer(state = initState, action = {}) {
     default: return state;
   }
 }
-
 
 /**
  * This is used to save the result of the API to the reducer
@@ -110,4 +104,3 @@ export const thunkGetBreedSubImages = (breedName) => {
 
   }
 }
-
