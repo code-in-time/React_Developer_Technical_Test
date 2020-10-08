@@ -9,11 +9,11 @@ const ACTION_SAVE_SUBBREED_IMAGES = 'ACTION_SAVE_SUBBREED_IMAGES';
 
 const initState = {
   allBreeds: ['a', 'a'],
-  subBreedImages: [
-    {breed1: ['img1', 'img2']},
-    {breed2: ['img1', 'img2']},
-    {breed3: ['img1', 'img2']},
-  ],
+  subBreedImages: {
+    breed1: ['img1', 'img2'],
+    breed2: ['img1', 'img2'],
+    breed3: ['img1', 'img2'],
+  },
   APILoading: {
     allBreeds: false,
     getImages: false
@@ -33,9 +33,7 @@ export default function reducer(state = initState, action = {}) {
       case ACTION_SAVE_SUBBREED_IMAGES:
         state = cloneDeep(state);
         // Cache the image searches
-        const obj = {}
-        obj[action.payload.breedName] = action.payload.subBreedImages;
-        state.subBreedImages.push(obj)
+        state.subBreedImages[action.payload.breedName] = action.payload.subBreedImages
         return state;
 
     default: return state;
@@ -88,14 +86,15 @@ export const thunkGetAllBreeds = () => {
 export const thunkGetBreedSubImages = (breedName) => {
   return (dispatch, state) => {
 
-    // Check if this exists in the cache
-    // if (state.Breeds.subBreedImages[breedName]) {
+      const subBreedImagesData = state().Breeds.subBreedImages;
+      
+      // Check if this breed images have been cached
+      if (subBreedImagesData[breedName]) {
+        // Images are cached
+        return
+      }
 
-    //   dispatch(actionCreator_SAVE_SUBBREED_IMAGES(subBreedImages, breedName))
-    // }
-
-
-
+    // Images are not cached
     // Make a request
     axios.get('https://dog.ceo/api/breed/hound/images/random/3')
       .then(function (response) {
