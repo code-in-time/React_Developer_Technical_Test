@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
 
 import { thunkGetBreedSubImages } from '../redux/reducers/Breeds';
+import Template1 from '../Template/Template1';
 
 const BreedImages = (props: any) => {
 
@@ -15,9 +16,11 @@ const BreedImages = (props: any) => {
   }, []);
 
   return (
-    <div>
-    Breed Images {breedGroup}
-    </div>
+    <Template1 className="BreedImages">
+      <div>
+        Breed Images {breedGroup}
+      </div>
+    </Template1>
   );
 };
 

@@ -1,0 +1,22 @@
+div.Home {
+
+  table {
+    width: 600px;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 4px;
+    }
+
+    th {
+      color: $color-brown;
+      border-bottom: 1px solid $color-black;
+    }
+
+    a {
+      color: $color-brown;
+    }
+
+  }
+
+}

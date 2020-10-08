@@ -1,6 +1,9 @@
 @import './variables.scss';
+@import './Template1.scss';
+@import './Home.scss';
 
 body {
+  font-size: 16px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,3 +13,17 @@ body {
   background-color: $color-grey;
   text-align: left;
 }
+
+h1 {
+  color: $color-brown;
+  font-size: 30px;
+}
+
+input, button {
+  height: 40px;
+}
+
+input {
+  border: 1px solid $color-brown;
+}
+

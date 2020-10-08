@@ -2,8 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import BreedImages from './Pages/BreedImages';
@@ -14,10 +13,6 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <Link to="/" >Home</Link> |
-          <Link to="/breedImages/corgi">Breed Images</Link>
-          <hr />
-
           <Switch>
             <Route exact path="/">
               <Home />
