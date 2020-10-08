@@ -25,12 +25,10 @@ h2 {
   font-size: 20px;
 }
 
-input, button {
-  height: 40px;
-}
-
 input {
+  height: 40px;
   border: 1px solid $color-brown;
+  outline: none;
 }
 
 /** helpers */
@@ -42,10 +40,19 @@ input {
 .text-color-brown{
   color: $color-brown;
 }
+
 .text-color-black{
   color: $color-black;
 }
+
 .text-color-grey{
   color: $color-grey;
 }
 
+.btn {
+  height: 40px;
+  border: 1px solid $color-brown;
+  color: $color-brown;
+  padding: 5px;
+  text-decoration: none;
+}

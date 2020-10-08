@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { thunkGetBreedSubImages } from '../redux/reducers/Breeds';
 import Template1 from '../Template/Template1';
@@ -57,6 +57,9 @@ const BreedImages = (props: any) => {
       <div className="imagesContainer">
         {generateImages(props.subBreedImages)}
       </div>
+
+      <Link to="/" className="btn">{'< back'}</Link>
+
     </Template1>
   );
 };
